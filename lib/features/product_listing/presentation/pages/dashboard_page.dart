@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mini_ecommerce_ui/core/routes/app_router.gr.dart';
 import 'package:mini_ecommerce_ui/gen/assets.gen.dart';
 
@@ -30,34 +32,41 @@ class DashboardPage extends StatelessWidget {
         final tabsRouter = AutoTabsRouter.of(context);
 
         return Scaffold(
-          // The child widget from the builder is the currently active route.
           body: child,
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: tabsRouter.activeIndex,
             onTap: tabsRouter.setActiveIndex,
-            selectedItemColor: Colors.orange,
+            selectedItemColor: Color.fromARGB(255, 255, 122, 0),
             unselectedItemColor: Colors.grey,
             type: BottomNavigationBarType.fixed,
             backgroundColor: Colors.white,
             items: [
               BottomNavigationBarItem(
-                icon: Assets.icons.home.image(),
-                activeIcon: Assets.icons.home.image(color: Colors.orange),
+                icon: Assets.icons.home.svg(),
+                activeIcon: Assets.icons.home.svg(
+                  color: Color.fromARGB(255, 255, 122, 0),
+                ),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                icon: Assets.icons.search.image(),
-                activeIcon: Assets.icons.search.image(color: Colors.orange),
+                icon: Assets.icons.search.svg(),
+                activeIcon: Assets.icons.search.svg(
+                  color: Color.fromARGB(255, 255, 122, 0),
+                ),
                 label: 'Search',
               ),
               BottomNavigationBarItem(
-                icon: Assets.icons.cart.image(),
-                activeIcon: Assets.icons.cart.image(color: Colors.orange),
+                icon: Assets.icons.bag.svg(),
+                activeIcon: Assets.icons.bag.svg(
+                  color: Color.fromARGB(255, 255, 122, 0),
+                ),
                 label: 'Cart',
               ),
               BottomNavigationBarItem(
-                icon: Assets.icons.settings.image(),
-                activeIcon: Assets.icons.settings.image(color: Colors.orange),
+                icon: Assets.icons.settings.svg(),
+                activeIcon: Assets.icons.settings.svg(
+                  color: Color.fromARGB(255, 255, 122, 0),
+                ),
                 label: 'Settings',
               ),
             ],

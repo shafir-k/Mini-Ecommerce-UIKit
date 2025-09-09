@@ -58,53 +58,57 @@ class OnboardingPage extends StatelessWidget {
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () {
-                            // TODO: Implement navigation to the sign up screen here
-                            // For example: context.router.push(const SignUpRoute());
+                            context.router.replaceAll([DashboardRoute()]);
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
-                            foregroundColor: Colors.black,
-                            padding: const EdgeInsets.symmetric(vertical: 16).r,
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 12,
+                              horizontal: 24,
+                            ).r,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30).r,
-                              side: const BorderSide(color: Colors.black),
+                              side: BorderSide(color: Colors.black),
                             ),
-                            elevation: 0,
                           ),
                           child: const Text(
                             'Sign Up',
                             style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                       ),
                       16.horizontalSpace,
-                      // Sign In button
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () {
                             context.router.replaceAll([DashboardRoute()]);
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFFFFA500),
-                            foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(vertical: 16).r,
+                            backgroundColor: Color.fromARGB(255, 255, 122, 0),
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 12,
+                              horizontal: 24,
+                            ).r,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30).r,
                             ),
-                            elevation: 0,
                           ),
                           child: const Text(
                             'Sign In',
                             style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                       ),
+
+                      // Sign In button
                     ],
                   ),
                 ],

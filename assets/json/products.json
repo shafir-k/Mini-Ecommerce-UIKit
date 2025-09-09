@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Tagerine Shirt",
+    "price": 240.32,
+    "image_asset": "assets/images/shirt1.png"
+  },
+  {
+    "title": "Leather Coat",
+    "price": 325.36,
+    "image_asset": "assets/images/shirt2.png"
+  },
+  {
+    "title": "Tagerine Shirt",
+    "price": 126.47,
+    "image_asset": "assets/images/shirt4.png"
+  },
+  {
+    "title": "Leather Coat",
+    "price": 257.85,
+    "image_asset": "assets/images/shirt3.png"
+  }
+]
