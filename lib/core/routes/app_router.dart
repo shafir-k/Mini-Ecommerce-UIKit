@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:mini_ecommerce_ui/core/routes/app_router.gr.dart';
 
 @AutoRouterConfig()
 class AppRouter extends RootStackRouter {
@@ -7,6 +8,15 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
-    /// routes go here
+    AutoRoute(page: OnboardingRoute.page, initial: true),
+    AutoRoute(
+      page: DashboardRoute.page,
+      children: [
+        AutoRoute(page: HomeRoute.page),
+        AutoRoute(page: SearchRoute.page),
+        AutoRoute(page: CartRoute.page),
+        AutoRoute(page: SettingRoute.page),
+      ],
+    ),
   ];
 }
