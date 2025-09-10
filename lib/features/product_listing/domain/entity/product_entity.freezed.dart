@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Product {
 
- String get title; double get price;@JsonKey(name: "image_asset") String get imageAsset;
+ int get id; String get title; double get price;@JsonKey(name: "image_asset") String get imageAsset;
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $ProductCopyWith<Product> get copyWith => _$ProductCopyWithImpl<Product>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Product&&(identical(other.title, title) || other.title == title)&&(identical(other.price, price) || other.price == price)&&(identical(other.imageAsset, imageAsset) || other.imageAsset == imageAsset));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Product&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.price, price) || other.price == price)&&(identical(other.imageAsset, imageAsset) || other.imageAsset == imageAsset));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,price,imageAsset);
+int get hashCode => Object.hash(runtimeType,id,title,price,imageAsset);
 
 @override
 String toString() {
-  return 'Product(title: $title, price: $price, imageAsset: $imageAsset)';
+  return 'Product(id: $id, title: $title, price: $price, imageAsset: $imageAsset)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $ProductCopyWith<$Res>  {
   factory $ProductCopyWith(Product value, $Res Function(Product) _then) = _$ProductCopyWithImpl;
 @useResult
 $Res call({
- String title, double price,@JsonKey(name: "image_asset") String imageAsset
+ int id, String title, double price,@JsonKey(name: "image_asset") String imageAsset
 });
 
 
@@ -65,9 +65,10 @@ class _$ProductCopyWithImpl<$Res>
 
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? price = null,Object? imageAsset = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? title = null,Object? price = null,Object? imageAsset = null,}) {
   return _then(_self.copyWith(
-title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as double,imageAsset: null == imageAsset ? _self.imageAsset : imageAsset // ignore: cast_nullable_to_non_nullable
 as String,
@@ -155,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  double price, @JsonKey(name: "image_asset")  String imageAsset)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String title,  double price, @JsonKey(name: "image_asset")  String imageAsset)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Product() when $default != null:
-return $default(_that.title,_that.price,_that.imageAsset);case _:
+return $default(_that.id,_that.title,_that.price,_that.imageAsset);case _:
   return orElse();
 
 }
@@ -176,10 +177,10 @@ return $default(_that.title,_that.price,_that.imageAsset);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  double price, @JsonKey(name: "image_asset")  String imageAsset)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String title,  double price, @JsonKey(name: "image_asset")  String imageAsset)  $default,) {final _that = this;
 switch (_that) {
 case _Product():
-return $default(_that.title,_that.price,_that.imageAsset);case _:
+return $default(_that.id,_that.title,_that.price,_that.imageAsset);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +197,10 @@ return $default(_that.title,_that.price,_that.imageAsset);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  double price, @JsonKey(name: "image_asset")  String imageAsset)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String title,  double price, @JsonKey(name: "image_asset")  String imageAsset)?  $default,) {final _that = this;
 switch (_that) {
 case _Product() when $default != null:
-return $default(_that.title,_that.price,_that.imageAsset);case _:
+return $default(_that.id,_that.title,_that.price,_that.imageAsset);case _:
   return null;
 
 }
@@ -211,9 +212,10 @@ return $default(_that.title,_that.price,_that.imageAsset);case _:
 @JsonSerializable()
 
 class _Product implements Product {
-  const _Product({required this.title, required this.price, @JsonKey(name: "image_asset") required this.imageAsset});
+  const _Product({required this.id, required this.title, required this.price, @JsonKey(name: "image_asset") required this.imageAsset});
   factory _Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
 
+@override final  int id;
 @override final  String title;
 @override final  double price;
 @override@JsonKey(name: "image_asset") final  String imageAsset;
@@ -231,16 +233,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Product&&(identical(other.title, title) || other.title == title)&&(identical(other.price, price) || other.price == price)&&(identical(other.imageAsset, imageAsset) || other.imageAsset == imageAsset));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Product&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.price, price) || other.price == price)&&(identical(other.imageAsset, imageAsset) || other.imageAsset == imageAsset));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,price,imageAsset);
+int get hashCode => Object.hash(runtimeType,id,title,price,imageAsset);
 
 @override
 String toString() {
-  return 'Product(title: $title, price: $price, imageAsset: $imageAsset)';
+  return 'Product(id: $id, title: $title, price: $price, imageAsset: $imageAsset)';
 }
 
 
@@ -251,7 +253,7 @@ abstract mixin class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   factory _$ProductCopyWith(_Product value, $Res Function(_Product) _then) = __$ProductCopyWithImpl;
 @override @useResult
 $Res call({
- String title, double price,@JsonKey(name: "image_asset") String imageAsset
+ int id, String title, double price,@JsonKey(name: "image_asset") String imageAsset
 });
 
 
@@ -268,9 +270,10 @@ class __$ProductCopyWithImpl<$Res>
 
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? price = null,Object? imageAsset = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? title = null,Object? price = null,Object? imageAsset = null,}) {
   return _then(_Product(
-title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as double,imageAsset: null == imageAsset ? _self.imageAsset : imageAsset // ignore: cast_nullable_to_non_nullable
 as String,

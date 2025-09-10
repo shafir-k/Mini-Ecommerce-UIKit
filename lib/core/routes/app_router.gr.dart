@@ -11,12 +11,12 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i8;
 import 'package:flutter/material.dart' as _i9;
+import 'package:mini_ecommerce_ui/features/cart/presentation/pages/cart_page.dart'
+    as _i1;
 import 'package:mini_ecommerce_ui/features/onboarding/presentation/onboarding_page.dart'
     as _i4;
 import 'package:mini_ecommerce_ui/features/product_listing/domain/entity/product_entity.dart'
     as _i10;
-import 'package:mini_ecommerce_ui/features/product_listing/presentation/pages/cart_page.dart'
-    as _i1;
 import 'package:mini_ecommerce_ui/features/product_listing/presentation/pages/dashboard_page.dart'
     as _i2;
 import 'package:mini_ecommerce_ui/features/product_listing/presentation/pages/home_page.dart'
