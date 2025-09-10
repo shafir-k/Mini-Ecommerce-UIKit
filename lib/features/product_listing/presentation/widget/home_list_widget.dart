@@ -2,16 +2,21 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mini_ecommerce_ui/core/routes/app_router.gr.dart';
+import 'package:mini_ecommerce_ui/features/cart/domain/entity/cart_product.dart';
+import 'package:mini_ecommerce_ui/features/cart/presentation/providers/cart_providers.dart';
 import 'package:mini_ecommerce_ui/features/product_listing/domain/entity/product_entity.dart';
+import 'package:mini_ecommerce_ui/features/product_listing/presentation/providers/product_details_providers.dart';
 import 'package:mini_ecommerce_ui/gen/assets.gen.dart';
 
-class HomeListWidget extends StatelessWidget {
+class HomeListWidget extends ConsumerWidget {
   const HomeListWidget({super.key, required this.productList});
   final List<Product> productList;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final defaultSelectedSize = ref.watch(selectedSizeProvider);
     return CustomScrollView(
       slivers: [
         SliverAppBar(
@@ -80,11 +85,7 @@ class HomeListWidget extends StatelessWidget {
                 onTap: () {
                   context.router.push(ProductDetailsRoute(product: product));
                 },
-                child: _buildProductCard(
-                  product.title,
-                  product.price,
-                  product.imageAsset,
-                ),
+                child: _buildProductCard(product, defaultSelectedSize, ref),
               );
             },
           ),
@@ -113,7 +114,11 @@ class HomeListWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildProductCard(String title, double price, String imageAsset) {
+  Widget _buildProductCard(
+    Product product,
+    String selectedSize,
+    WidgetRef ref,
+  ) {
     return Ink(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -132,7 +137,7 @@ class HomeListWidget extends StatelessWidget {
                       top: Radius.circular(20),
                     ),
                     child: Image.asset(
-                      imageAsset,
+                      product.imageAsset,
                       fit: BoxFit.cover,
                       width: double.infinity,
                     ),
@@ -146,7 +151,18 @@ class HomeListWidget extends StatelessWidget {
                 child: IconButton.filled(
                   padding: EdgeInsets.zero,
                   style: IconButton.styleFrom(backgroundColor: Colors.white),
-                  onPressed: () {},
+                  onPressed: () {
+                    ref
+                        .read(cartNotifierProvider.notifier)
+                        .addToCart(
+                          CartProduct(
+                            id: product.id.toString(),
+                            product: product,
+                            selectedSize: selectedSize,
+                            count: 1,
+                          ),
+                        );
+                  },
                   icon: Container(
                     padding: EdgeInsets.all(8).r,
                     decoration: BoxDecoration(
@@ -170,14 +186,14 @@ class HomeListWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '\$$price',
+                  '\$${product.price}',
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
                 ),
                 Text(
-                  title,
+                  product.title,
                   style: TextStyle(
                     fontSize: 16.sp,
                     color: Color.fromARGB(255, 121, 119, 128),

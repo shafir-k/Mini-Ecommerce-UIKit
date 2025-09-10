@@ -3,6 +3,7 @@ import 'package:mini_ecommerce_ui/features/cart/data/data_source/cart_data_sourc
 import 'package:mini_ecommerce_ui/features/cart/data/repository/cart_repository_impl.dart';
 import 'package:mini_ecommerce_ui/features/cart/domain/entity/cart_product.dart';
 import 'package:mini_ecommerce_ui/features/cart/domain/repository/cart_repository.dart';
+import 'package:mini_ecommerce_ui/features/shared/components/snackbar_manager.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'cart_providers.g.dart';
@@ -25,6 +26,7 @@ class CartNotifier extends _$CartNotifier {
 
   Future<void> addToCart(CartProduct product) async {
     await ref.read(cartRepositoryProvider).addToCart(product);
+    SnackBarManager.showSuccessSnackBar(message: "Product Added to Cart");
     state = AsyncData(await ref.read(cartRepositoryProvider).getCartItems());
   }
 

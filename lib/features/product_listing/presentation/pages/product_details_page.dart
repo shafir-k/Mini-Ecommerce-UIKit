@@ -2,6 +2,8 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mini_ecommerce_ui/features/cart/domain/entity/cart_product.dart';
+import 'package:mini_ecommerce_ui/features/cart/presentation/providers/cart_providers.dart';
 import 'package:mini_ecommerce_ui/features/product_listing/domain/entity/product_entity.dart';
 import 'package:mini_ecommerce_ui/features/product_listing/presentation/providers/product_details_providers.dart';
 import 'package:mini_ecommerce_ui/gen/assets.gen.dart';
@@ -13,6 +15,7 @@ class ProductDetailsPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final selectedSize = ref.watch(selectedSizeProvider);
     return Scaffold(
       appBar: AppBar(
         forceMaterialTransparency: true,
@@ -116,7 +119,16 @@ class ProductDetailsPage extends ConsumerWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        // Handle add to cart logic
+                        ref
+                            .read(cartNotifierProvider.notifier)
+                            .addToCart(
+                              CartProduct(
+                                id: product.id.toString(),
+                                product: product,
+                                selectedSize: selectedSize,
+                                count: 1,
+                              ),
+                            );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 255, 122, 0),
