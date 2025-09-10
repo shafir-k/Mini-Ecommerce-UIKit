@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mini_ecommerce_ui/core/routes/app_router.gr.dart';
 import 'package:mini_ecommerce_ui/features/cart/domain/entity/cart_product.dart';
 import 'package:mini_ecommerce_ui/features/cart/presentation/providers/cart_providers.dart';
 import 'package:mini_ecommerce_ui/features/cart/presentation/widgets/cart_item_widget.dart';
@@ -110,7 +111,9 @@ class CartPage extends ConsumerWidget {
                           ),
                           const SizedBox(height: 16),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              context.router.push(CheckoutRoute());
+                            },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color.fromARGB(255, 255, 122, 0),
                               minimumSize: const Size(double.infinity, 50),
