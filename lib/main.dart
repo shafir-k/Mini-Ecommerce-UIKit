@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mini_ecommerce_ui/core/routes/app_router.dart';
+import 'package:mini_ecommerce_ui/features/shared/components/snackbar_manager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) => MaterialApp.router(
         debugShowCheckedModeBanner: false,
+        scaffoldMessengerKey: SnackBarManager.scaffoldMessengerKey,
         title: 'MINI ECOM',
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
